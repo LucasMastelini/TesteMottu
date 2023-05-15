@@ -25,7 +25,7 @@ namespace TesteMottu.Controllers
         {
             double average = _averageService.CalculateOverallAverage(students);
             var result = $"Média Geral: {average:N2}"; // Formatação com duas casas decimais
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("individual")]

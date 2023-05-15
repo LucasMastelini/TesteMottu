@@ -7,15 +7,15 @@ namespace TesteMottu.Entitys
         public double CalculateOverallAverage(List<Student> students)
         {
             double sum = students.Sum(s => s.Notas.Sum());
-            int count = students.Sum(s => s.Notas.Count);
-            double average = sum / count;
+            double average = sum / 4;
             return average;
         }
 
         public List<StudentDto> CalculateIndividualAverages(List<Student> students)
         {
             List<StudentDto> averages = new List<StudentDto>();
-            foreach (var student in students)
+            var studentOrdenation = students.OrderByDescending(s => s.Notas.Average());
+            foreach (var student in studentOrdenation)
             {
                 double average = student.Notas.Average();
                 StudentDto studentAverage = new StudentDto
